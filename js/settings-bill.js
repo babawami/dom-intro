@@ -24,22 +24,20 @@ var warningCost = 0;
 
 function settingClick(){
 var updateCall = callCostSettingElem.value;
-callValue = parseFloat(updateCall);
-
 var updateSms = smsCostSettingElem.value;
-smsValue = parseFloat(updateSms);
-
-  var updateCritical =  criticalLevelSettingElem.value ;
-  criticalCost = parseFloat(updateCritical);
-
+var updateCritical =  criticalLevelSettingElem.value ;
 var updateWarning = warningLevelSettingElem.value;
+criticalCost = parseFloat(updateCritical);
 warningCost = parseFloat(updateWarning);
 
-//   if(callCostSettingElem != ""){
-//    callValue = parseFloat(updateCall)
-//
-//
-//    }
+  if(callCostSettingElem != ""){
+  callValue = parseFloat(updateCall);
+}
+
+if(callCostSettingElem != ""){
+smsValue = parseFloat(updateSms);
+}
+
    console.log(criticalCost);
  }
 
@@ -73,8 +71,8 @@ if (pickedRadioBtn){
 
       if( totalCostSet >= criticalCost ){
         totalSettingElem.classList.add("danger");
-        alert("you can no longer add");
         addTwoBtn.disabled = true;
+        alert("you can no longer add");
      }
 }
 // create a variables that will keep track of all three totals.

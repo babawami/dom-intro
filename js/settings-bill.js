@@ -20,6 +20,7 @@ var totalcalls = 0;
 var totalsms =0;
 var criticalCost = 0;
 var warningCost = 0;
+var totalCostSet =0;
 //callCostSettingElem.value = 0;
 
 function settingClick(){
@@ -36,6 +37,17 @@ warningCost = parseFloat(updateWarning);
 
 if(callCostSettingElem != ""){
 smsValue = parseFloat(updateSms);
+}
+
+// remove color if level gets update;
+if(totalCostSet < warningCost){
+  totalSettingElem.classList.remove("warning");
+}
+
+if( totalCostSet < criticalCost ){
+  totalSettingElem.classList.remove("danger");
+  addTwoBtn.disabled = false;
+
 }
 
    console.log(criticalCost);
@@ -61,19 +73,24 @@ if (pickedRadioBtn){
   //console.log(totalsms);
      callTotalSettingsElem.innerHTML = totalcalls.toFixed(2);
      smsTotalSettingElem.innerHTML = totalsms.toFixed(2);
-     var totalCostSet = totalcalls + totalsms;
+      totalCostSet = totalcalls + totalsms;
+      console.log(totalCostSet);
      totalSettingElem.innerHTML= totalCostSet.toFixed(2);
   //color the total based on the criteria
-     if(totalCostSet >= warningCost){
+     if(totalCostSet > warningCost ){
+
+       console.log(totalCostSet > warningCost);
        totalSettingElem.classList.add("warning");
 
      }
-
-      if( totalCostSet >= criticalCost ){
+   if( totalCostSet > criticalCost ){
         totalSettingElem.classList.add("danger");
         addTwoBtn.disabled = true;
-        alert("you can no longer add");
+      //  alert("you can no longer add");
      }
+
+
+
 }
 // create a variables that will keep track of all three totals.
 addTwoBtn.addEventListener("click" , billTotal);

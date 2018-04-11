@@ -33,20 +33,29 @@ function calculateBtnClicked(){
       }
 
 
-
   }
 
   //round to two decimals
   var roundedBillTotal = billTotal.toFixed(2);
   billTotalElement.innerHTML = roundedBillTotal;
 // change color when amount hits 20-30 cost
-  if ( roundedBillTotal >= 20 && roundedBillTotal <=30   ){
-    billTotalElement.classList.add("warning")
+  if ( roundedBillTotal >= 20){
+    billTotalElement.classList.add("warning");
+  }
+
+  if ( roundedBillTotal < 20){
+    billTotalElement.classList.remove("warning");
   }
 // change color when amount hits 20-30 cost
-     else if(roundedBillTotal > 30  ){
-    billTotalElement.classList.add("danger")
+      if(roundedBillTotal > 30  ){
+    billTotalElement.classList.add("danger");
   }
+
+  if(roundedBillTotal < 30  ){
+  billTotalElement.classList.remove("danger");
+ //return billTotalElement.classList.add("warning");
+}
+
 
 
 

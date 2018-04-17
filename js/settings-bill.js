@@ -31,11 +31,11 @@ var updateWarning = warningLevelSettingElem.value;
 criticalCost = parseFloat(updateCritical);
 warningCost = parseFloat(updateWarning);
 
-  if(callCostSettingElem != ""){
+  if(updateCall  != ""){
   callValue = parseFloat(updateCall);
 }
 
-if(callCostSettingElem != ""){
+if(updateSms != ""){
 smsValue = parseFloat(updateSms);
 }
 

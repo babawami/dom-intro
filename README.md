@@ -1,6 +1,6 @@
 # dom-intro
 
-A brief introduction to the browser Document Object Model (DOM)
+A brief introduction to the browser Document Object Model (DOM) and Handlebars
 
 ## Usefull things you can do with the DOM
 
@@ -9,3 +9,4 @@ A brief introduction to the browser Document Object Model (DOM)
 * Set/get a value inside of and div or other elements
 * Add/remove classes from an element
 * Listen for events on HTML elements
+*Changed dom-intro Text input bill and Radio button bill dom-widgets - total sections to use Handlebars.

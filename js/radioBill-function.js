@@ -15,6 +15,18 @@ function count(billType){
   }
 }
 
+
+ function colours(){
+   if(totalCostTwo>=30 && totalCostTwo<50){
+     return 'warning';
+   }
+
+   if(totalCostTwo>=50){
+     return 'danger';
+   }
+ }
+
+
 return {
   count,
 
@@ -26,9 +38,12 @@ return {
     return smsTotalTwo.toFixed(2);
   },
 
+
   combineTotal: function(){
     totalCostTwo = callsTotalTwo + smsTotalTwo;
     return totalCostTwo.toFixed(2);
   },
+
+    colours:colours
   }
 }

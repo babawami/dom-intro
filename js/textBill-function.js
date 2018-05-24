@@ -14,6 +14,16 @@ function totalVar(){
       smsTotal += 0.75;
     }
    }
+
+   function colour(){
+     if(totalBillS>=30 && totalBillS<50){
+       return 'warning';
+     }
+
+     if(totalBillS>=50){
+       return 'danger';
+     }
+   }
   // give access to the functions and variables
   return {
     calulateValue : cal,
@@ -29,6 +39,12 @@ function totalVar(){
     totalValue: function(){
       totalBillS = callsTotal + smsTotal;
       return totalBillS;
-    }
+    },
+
+    colour:colour,
+
+
+
+
   }
 }

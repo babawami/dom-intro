@@ -4,11 +4,23 @@ document.addEventListener('DOMContentLoaded', function(){
   //////////////////////////////////////////////////////////////////////////
   // get a reference to the sms or call radio buttons
   var billItemTypeRadioElem = document.querySelector(".billItemTypeRadio");
-  var callsTotalElemTwo = document.querySelector(".callTotalTwo");
-  var  smsTotalElemTwO = document.querySelector(".smsTotalTwo");
-  var  totalCostElemTwo = document.querySelector(".totalTwo");
   //get a reference to the add button
   var radioTotalAddBtn = document.querySelector(".radioBillAddBtn");
+ // get reference to display the template
+  var templateDispaly = document.querySelector(".contentTwo");
+  // reference the template from html
+  var template = document.querySelector(".totalTemplate").innerHTML;
+  // compile the template from html
+  var compiletemplate = Handlebars.compile(template);
+// feeder to the compiled template
+  var data = {
+    callcost : "0.00",
+    smscost:"0.00",
+    totalcost : "0.00",
+  }
+
+  templateDispaly.innerHTML = compiletemplate(data);
+
   //////////////////////////////////////////////////////////////////////
 
   // Dom functions
@@ -21,20 +33,16 @@ document.addEventListener('DOMContentLoaded', function(){
   }
          var billItemSelected = selectBill.count(billItemType);
          var totalCostTwo = selectBill.combineTotal()
-      //update the totals that is displayed on the screen.
-      callsTotalElemTwo.innerHTML =selectBill.callsTotal();
-      smsTotalElemTwO.innerHTML = selectBill.smsTotal();
-      //var totalCostTwo = callsTotalTwo + smsTotalTwo;
-      totalCostElemTwo.innerHTML = selectBill.combineTotal()
 
-      //color the total based on the criteria
-     if (totalCostTwo >= 50){
-         // adding the danger class will make the text red
-         totalCostElemTwo.classList.add("danger");
-     }
-      if (totalCostTwo >= 30){
-         totalCostElemTwo.classList.add("warning");
-     }
+         var dataTwo ={
+           callcost: selectBill.callsTotal(),
+           smscost:  selectBill.smsTotal(),
+           totalcost: selectBill.combineTotal(),
+           addColour: selectBill.colours(),
+
+         }
+         templateDispaly.innerHTML = compiletemplate( dataTwo );
+
   }
   //add an event listener for when the add button is pressed
   radioTotalAddBtn.addEventListener('click', radioBillTotal);
